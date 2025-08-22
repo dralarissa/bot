@@ -1,43 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <title>Download automático</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <noscript>Ative o JavaScript para iniciar o download automaticamente.</noscript>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
-    .msg { max-width: 620px; line-height: 1.45; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Download</title>
 </head>
 <body>
-  <div class="msg">
-    <h1>Preparando seu download…</h1>
-    <p>Se o download não começar em alguns segundos, <a id="manual" href="meu-arquivo.zip" download>clique aqui</a>.</p>
-  </div>
-
-  <script>
-    // Nome do arquivo no MESMO diretório do index.html
-    const FILE = "app.apk";     // troque pelo nome real
-    const FILE_NAME_SUGERIDO = "app.apk"; // nome sugerido ao salvar
-
-    // Cria um link oculto com atributo "download" e clica automaticamente
-    document.addEventListener("DOMContentLoaded", () => {
-      const a = document.createElement("a");
-      a.href = FILE;
-      a.setAttribute("download", FILE_NAME_SUGERIDO);
-      a.style.display = "none";
-      document.body.appendChild(a);
-
-      // Pequeno atraso ajuda alguns navegadores a não bloquear
-      setTimeout(() => {
-        a.click();
-        // fallback: atualiza o link manual para garantir consistência
-        const manual = document.getElementById("manual");
-        if (manual) manual.href = FILE;
-        document.body.removeChild(a);
-      }, 150);
-    });
-  </script>
+<script>
+  // Nome do arquivo no MESMO diretório do HTML
+  const arquivo = "app.apk"; // troque pelo nome real
+  const link = document.createElement("a");
+  link.href = arquivo;
+  link.download = arquivo;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+</script>
 </body>
 </html>
